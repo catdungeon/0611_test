@@ -39,7 +39,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": ""JoyStick"",
                     ""id"": ""6113bcf8-64d8-46a6-bd5b-4fdc87504d22"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",

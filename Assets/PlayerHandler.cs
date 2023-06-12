@@ -31,9 +31,23 @@ public class PlayerHandler : MonoBehaviour
         Vector2 vector2 = _inputMaster.Player.Movement.ReadValue<Vector2>();
         
         if (vector2!= Vector2.zero)
-        {   
-             Debug.Log(vector2);
+        {
+            Debug.Log(vector2);
+             float _temp_speed = Mathf.Abs(vector2.x * speed);
+             
+             transform.localScale = new Vector3(-1, 1, 1);
+             
+             animator.SetFloat("speed",_temp_speed);
+             if (_temp_speed < 4.5f)
+             {
+                 animator.Play("walk");
+             }
              rigidbody2D.velocity = new Vector3(vector2.x, 0,vector2.y)*speed;
+        }
+        else
+        {
+            animator.Play("idle");
+            rigidbody2D.velocity = Vector2.zero;
         }
     }
 
@@ -64,7 +78,7 @@ public class PlayerHandler : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            rigidbody2D.velocity -= new Vector2(5, 0);
+            rigidbody2D.velocity -= new Vector2(5, rigidbody2D.velocity.y);
             transform.localScale = new Vector3(1, 1, 1);
             animator.SetBool("walking", true);
         }
