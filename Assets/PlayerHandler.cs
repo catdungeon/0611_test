@@ -6,6 +6,7 @@ public class PlayerHandler : MonoBehaviour
 {
     public int JumpForce = 100;
 
+    public float speed = 5.0f;
     public Animator animator;
 
     private Rigidbody2D rigidbody2D;
@@ -26,11 +27,13 @@ public class PlayerHandler : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private void Movement()
     {
+        
         Vector2 vector2 = _inputMaster.Player.Movement.ReadValue<Vector2>();
-        Debug.Log(vector2);
+        
         if (vector2!= Vector2.zero)
-        {
-            rigidbody2D.velocity = new Vector3(vector2.x, 0,vector2.y);
+        {   
+             Debug.Log(vector2);
+             rigidbody2D.velocity = new Vector3(vector2.x, 0,vector2.y)*speed;
         }
     }
 
